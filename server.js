@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const path = require('path')
+const tools = require('./routes/tools.js')
 
-const PORT = 1337
+const PORT = 1339
 const staticFolder = path.join(__dirname, 'public')
 
 
@@ -19,6 +20,13 @@ app.use((req, res, next) =>{
 
 
 // Routes
+app.get('/', (req, res) => {
+	res.send('Firebase Toolshop')
+})
+
+
+// REST API for /tools
+app.use('/tools', tools)
 
 
 app.listen(PORT, () => {
